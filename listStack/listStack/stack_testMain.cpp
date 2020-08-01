@@ -1,5 +1,6 @@
 #include "listStack.h"
 #include <stdio.h>
+#pragma warning (disable : 4996)
 
 int menu(const char **mList, size_t menuCnt);	/* 메뉴 출력 및 메뉴번호 입력 함수 */
 void mInput(Stack *sp);			/* 입력메뉴 처리 함수 */
