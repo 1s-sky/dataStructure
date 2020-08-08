@@ -24,10 +24,10 @@ int main()
 		push(&lstk, ch);
 	
 	//명령어 개수 읽기
-	fscanf(fp, " %c", &cmdCnt);
+	fscanf(fp, " %d", &cmdCnt);
 	
 	//명령어 수행
-	for (int i = 0; i < cmdCnt; i++) 
+	for (i = 0; i < cmdCnt; i++) 
 	{
 		//명렁어 읽어오기
 		fscanf(fp, " %c", &ch);
