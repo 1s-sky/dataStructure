@@ -31,31 +31,30 @@ int main()
 	{
 		//명렁어 읽어오기
 		fscanf(fp, " %c", &ch);
-		if (ch == 'L') {       //커서 왼쪽으로 이동
-			char temp;
-			if (pop(&lstk, &temp)) {
-				push(&rstk, temp);
+		switch (ch)
+		{
+		case 'L':    //커서 왼쪽으로 이동
+			if (pop(&lstk, &ch)) {  //if 체크 필수!
+				push(&rstk, ch);
 			}
-		}
-		else if (ch == 'D') {  //커서 오른쪽으로 이동
-			char temp;
-			if (pop(&rstk, &temp)) {
-				push(&lstk, temp);
+			break;
+		
+		case 'D':    //커서 오른쪽으로 이동 
+			if (pop(&rstk, &ch)) {
+				push(&lstk, ch);
 			}
-		}
-		else if (ch == 'B') {  //커서 왼쪽의 문자 삭제
-			char temp;
-			pop(&lstk, &temp);
-		}
-		else if (ch == 'P') {  //P뒤의 문자 커서 앞에 추가
-			char temp;
-			fscanf(fp, " %c", &temp);
-			push(&lstk, temp);
-		}
-		else {
-			printf("잘못된 입력입니다.");
+			break;
+		
+		case 'B':    //커서 왼쪽의 문자 삭제
+			pop(&lstk, &ch);
+			break;
+		
+		case 'P':    //P뒤의 문자 커서 앞에 추가
+			fscanf(fp, " %c", &ch);
+			push(&lstk, ch);
 			break;
 		}
+		
 	}
 
 	//출력하기
@@ -67,6 +66,9 @@ int main()
 		}
 	}
 	printStack(&rstk);
+	//데이터 해제 필수!
+	destroyStack(&lstk);
+	destroyStack(&rstk);
 
 	fclose(fp);
 	return 0;
